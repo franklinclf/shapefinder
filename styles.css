@@ -1,7 +1,10 @@
 body {
-  
+  background-color: #172336;
 }
 h1 {
   text-align: center;
   font-family: "Fredoka One";
+}
+.game {
+  margin: auto;
 }
