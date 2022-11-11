@@ -6,10 +6,16 @@ h1 {
   text-align: center;
   font-family: "Fredoka One";
 }
+
+p {
+  color: rgb(255, 186, 36);
+  text-align: center;
+  font-family: "Fredoka One";
+}
 #game {
   width: 800px;
   height: 480px;
   margin: auto;
-  stroke: yellow;
-  stroke-width: 5px;
+  border: 5px solid rgb(255, 186, 36);
+  border-radius: 5px;
 }
