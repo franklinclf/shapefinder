@@ -6,5 +6,6 @@ h1 {
   font-family: "Fredoka One";
 }
 #game {
-  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
