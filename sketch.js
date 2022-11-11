@@ -2,7 +2,7 @@ const TELA_MENU = 0;
 
 
 function setup() {
-  createCanvas(800, 480);
+  var canvas = createCanvas(800, 480);
   canvas.parent('game');
 }
 
