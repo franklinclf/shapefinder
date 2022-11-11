@@ -1,7 +1,8 @@
 body {
-  background-color: black;
+  background-color: rgb(26, 32, 45);
 }
 h1 {
+  color: rgb(255, 186, 36);
   text-align: center;
   font-family: "Fredoka One";
 }
