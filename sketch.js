@@ -3,21 +3,23 @@ var TELA_CONT = false;
 var TELA_SOBRE = false;
 const TELA_JOGO = 3
 var TELA;
-var bg, title, jogar, controles, sobre, som, voltar, escape, wasd, enter;
+var bg, title, jogar, controles, sobre, som, voltar, escape, wasd, enter, ship;
 var onLoop = true;
+let square;
 
 function preload(){
   bg = loadImage('assets/background.png');
   title = loadImage('assets/title.png');
   wasd = loadImage('assets/wasd.png');
   enter = loadImage('assets/enter.png');
+  ship = loadAnimation('assets/ship.png', { size: [24, 16], frames: 10 });
 }
 
 function setup() {
   var canvas = createCanvas(800, 480);
   canvas.parent('game');
   TELA = TELA_MENU;
-  
+
   jogar = new Button({
     x: 265, y: 300,
     width: 250, height: 50,
@@ -103,6 +105,8 @@ function draw() {
   }
   
   else if(TELA = TELA_JOGO){
+    TELA_SOBRE = false;
+    TELA_CONT = false;
     jogo();
   }
   
