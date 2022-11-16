@@ -155,4 +155,5 @@ function jogo(){
   text('Essa é a tela do jogo!', 400, 240);
   voltar.draw();
   fill('white');
+  animation(ship, 100, 100);
 }
