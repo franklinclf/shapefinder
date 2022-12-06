@@ -15,6 +15,7 @@ var pontuacao = 0;
 var timer = 0;
 var formatos = ['square', 'triangle', 'circle'];
 var formatosPT = ['quadrado', 'triângulo', 'círculo'];
+var formatosPT2 = ['quadrado', 'círculo'];
 var formatoAtual = formatosPT[0];
 
 function preload(){
@@ -252,7 +253,7 @@ function criarFormas(){
     }
     quantFormas = 14;
     shapes.speed = nivelAtual + 1;
-    bullets.speed *= 1.2;
+    bullets.speed *= 2;
     nivelAtual++;
   }
 }
@@ -314,10 +315,18 @@ function placar(){
   text(`${formatoAtual}`, 400, 45);
 }
 
+function available(escala){
+  for(let i = 0; i < shapes.length; i++){
+    if(shapes[i].scale === escala){
+      return true;
+    }
+  }
+  return false;
+}
+
 function jogo(){
   background(21, 34, 56);
   objetivoAtual = nivelAtual * 14;
-
   if(quantFormas === 0 && pontuacao < objetivoAtual && pontuacao != 0){
     playing = false;
     TELA = TELA_MENU;
@@ -374,7 +383,24 @@ function jogo(){
   timer++;
   rect(300, 20, timer, 17);
   if(frameCount % 200 === 0){
-    formatoAtual = formatosPT[floor(random(0,3))];
+    if(available(0.99) && available(1) && available(1.1)){
+      formatoAtual = formatosPT[floor(random(0,3))];
+    }
+    else if(available(0.99) && available(1.1)){
+      formatoAtual = formatosPT[floor(random(0,2))];
+    }
+    else if(available(0.99) && available(1)){
+      formatoAtual = formatosPT2[floor(random(0,2))];
+    }
+    else if(available(0.99)){
+      formatoAtual = formatosPT[0];
+    }
+    else if(available(1.1)){
+      formatoAtual = formatosPT[1];
+    }
+    else{
+      formatoAtual = formatosPT[2];
+    }
     timer = 0;
   }
   
