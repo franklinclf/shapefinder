@@ -1,4 +1,4 @@
-const STYLE_DEF = {
+const STYLE_DEFAULT = {
 	background: 'rgb(255, 186, 36)',
 	color: '#FFFFFF',
 	border_color: '',
@@ -6,10 +6,10 @@ const STYLE_DEF = {
 	border_radius: 5,
 
 	text_font: 'VT323',
-	text_size: 50,
+	text_size: 45,
 }
 
-const STYLE_HOV = {
+const STYLE_HOVER = {
 	background: 'rgb(255, 186, 36)',
 	color: '#111',
 }
@@ -31,7 +31,7 @@ class Button {
 
 	#props = { };
 	#bounds = { minx: null, miny: null, maxx: null, maxy: null, centerx: null, centery: null };
-	#cstyles = { default: STYLE_DEF, hover: STYLE_HOV, pressed: STYLE_PRESSED, disabled: STYLE_DISABLED };
+	#cstyles = { default: STYLE_DEFAULT, hover: STYLE_HOVER, pressed: STYLE_PRESSED, disabled: STYLE_DISABLED };
 
 	constructor(properties) {
 		this.#props = Object.assign({
@@ -41,12 +41,11 @@ class Button {
 			width: null,
 			height: null,
 
-			style_default: STYLE_DEF,
-			style_hover: STYLE_HOV,
+			style_default: STYLE_DEFAULT,
+			style_hover: STYLE_HOVER,
 			style_pressed: STYLE_PRESSED,
 			style_disabled: STYLE_DISABLED,
 
-			on_mouse_hover: null,
 			on_mouse_enter: null,
 			on_mouse_exit: null,
 			on_press: null,
@@ -79,10 +78,10 @@ class Button {
 	}
 
 	#calculateStyles() {
-		this.#cstyles.default	= Object.assign({}, STYLE_DEF, this.#props.style_default);
-		this.#cstyles.hover		= Object.assign({}, STYLE_DEF, this.#props.style_default, this.#props.style_hover);
-		this.#cstyles.pressed	= Object.assign({}, STYLE_DEF, this.#props.style_default, this.#props.style_pressed);
-		this.#cstyles.disabled	= Object.assign({}, STYLE_DEF, this.#props.style_default, this.#props.style_disabled);
+		this.#cstyles.default	= Object.assign({}, STYLE_DEFAULT, this.#props.style_default);
+		this.#cstyles.hover		= Object.assign({}, STYLE_DEFAULT, this.#props.style_default, this.#props.style_hover);
+		this.#cstyles.pressed	= Object.assign({}, STYLE_DEFAULT, this.#props.style_default, this.#props.style_pressed);
+		this.#cstyles.disabled	= Object.assign({}, STYLE_DEFAULT, this.#props.style_default, this.#props.style_disabled);
 	}
 
 	update(properties) {
@@ -90,7 +89,7 @@ class Button {
 			Object.assign(this.#props, properties); 
 		} catch(e) {console.warn( `Encountered an unrecognized property! Original error: ${e.message}` )}
 		
-		if ( 'x' in properties || 'y' in properties || 'width' in properties || 'height' in properties ) 
+		if ( 'x' in properties || 'y' in properties || 'width' in properties || 'height' in properties || 'align_x' in properties || 'align_y' in properties ) 
 			this.#calculateBounds();
 		
 		if ( 'style_default' in properties || 'style_hover' in properties || 'style_pressed' in properties || 'style_disabled' in properties )
